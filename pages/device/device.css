@@ -1,0 +1,347 @@
+.main {
+	padding: 0;
+	overflow: hidden;	
+}
+
+.device_info{
+	width: 95%;
+	margin: 0 auto; /* 设置左右外边距为auto可以实现水平居中 */
+}
+
+.deviceMain {
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.device {
+	margin-bottom: 15px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 3%;
+}
+
+.deviceTop {
+	display: flex;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.deviceTopLeft {
+  flex: 1.2;
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  flex-direction: column;
+  position: relative;
+  width: 100px; /* 确保父容器的宽度固定 */
+  height: 100px; /* 确保父容器的高度固定 */
+  overflow: hidden; /* 防止图片溢出容器 */
+}
+
+.imgType {
+  max-width: 80%; /* 图片宽度限制为父容器的80% */
+  max-height: 80%; /* 图片高度限制为父容器的80% */
+  object-fit: contain; /* 确保图片完整显示且保持比例 */
+  display: block; /* 避免默认的内联间距 */
+  margin: auto; /* 保证图片在容器内居中 */
+  position: static; /* 移除绝对定位，确保正常布局 */
+}
+
+.tpyeNameSty {
+	font-size: 9px;
+	transform: rotate(-40deg);
+	position: absolute;
+	top: 8px;
+	left: 2px;
+	color: #fff;
+}
+
+.valueSty {
+	margin-bottom: 10px;
+}
+
+.symbolMoney {
+	font-size: 16px;
+}
+
+.moneyVal {
+	font-size: 24px;
+}
+
+.useCondition {
+	font-size: 10px;
+	padding: 4px 10px;
+	border-radius: 12px;
+}
+
+.deviceTopRight {
+	flex: 3;
+	display: flex;
+	padding-bottom: 12px;
+}
+
+.ctr-left {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.deviceName {
+	font-size: 16px;
+	padding: 14px 0;
+	text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.04);
+}
+
+.deviceSerial {
+	font-size: 12px;
+	text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.04);
+	padding-bottom: 8px;
+}
+
+.deviceDate {
+	font-size: 12px;
+	text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.04);
+}
+
+.ctr-right {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding: 0 10px;
+}
+
+.useBtn {
+	color: #fff;
+	font-size: 12px;
+	padding: 6px 20px;
+	border-radius: 18px;
+}
+
+.deviceBottom {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.ruleLabel {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.ruleLabel-left {
+	flex: 1;
+	display: flex;
+	align-items: center;
+}
+
+.overlay {
+	margin-right: 10px;
+	padding: 4px 10px;
+	font-size: 10px;
+	border-radius: 11px;
+}
+
+.limit {
+	font-size: 12px;
+}
+
+.ruleBtn {
+	display: flex;
+	align-items: center;
+	font-size: 12px;
+}
+
+.arrowIcon {
+	position: relative;
+	width: 6px;
+	height: 6px;
+	transform: rotate(135deg);
+
+}
+
+.rotate {
+	transform: rotate(-45deg);
+	bottom: -2px;
+}
+
+.backRotate {
+	transform: rotate(135deg);
+	top: -2px;
+}
+
+.deviceDetail {
+	display: flex;
+	flex-direction: column;
+}
+
+.infoList {
+	padding-top: 10px;
+	font-size: 12px;
+}
+
+/* 颜色配置 */
+.borderColor1 {
+	border: 1px solid #5f98ff;
+}
+
+.borderColor2 {
+	border: 1px solid #ff7979;
+}
+
+.borderColor3 {
+	border: 1px solid #fc932c;
+}
+
+.borderColor4 {
+	border: 1px solid #c3c3c3;
+}
+
+.arrowIcon1 {
+	border-top: 1px solid #5f98ff;
+	border-right: 1px solid #5f98ff;
+}
+
+.arrowIcon2 {
+	border-top: 1px solid #ff7979;
+	border-right: 1px solid #ff7979;
+}
+
+.arrowIcon3 {
+	border-top: 1px solid #fc932c;
+	border-right: 1px solid #fc932c;
+}
+
+.arrowIcon4 {
+	border-top: 1px solid #c3c3c3;
+	border-right: 1px solid #c3c3c3;
+}
+
+.useBtnBgColor1 {
+	background-color: #2b6feb;
+}
+
+.useBtnBgColor2 {
+	background-color: #ff5555;
+}
+
+.useBtnBgColor3 {
+	background-color: seagreen;
+}
+
+.useBtnBgColor4 {
+	background-color: #bebebe;
+}
+
+.color1 {
+	color: #2b6feb;
+}
+
+.color2 {
+	color: #5f98ff;
+}
+
+.color3 {
+	color: #ff5555;
+}
+
+.color4 {
+	color: #ff7979;
+}
+
+.color5 {
+	color: #fa830e;
+}
+
+.color6 {
+	color: #fc932c;
+}
+
+.color7 {
+	color: #bebebe;
+}
+
+.color8 {
+	color: #c3c3c3;
+}
+
+.bgColor1 {
+	background-color: #edf4ff;
+}
+
+.bgColor2 {
+	background-color: #ffeeee;
+}
+
+.bgColor3 {
+	background-color: #fff2e5;
+}
+
+.bgColor4 {
+	background-color: #f3f3f3;
+}
+
+.bgColorTop1 {
+	background: radial-gradient(circle at left bottom, #edf4ff, #edf4ff) bottom left / 50% 100% no-repeat,
+	            radial-gradient(circle at right bottom, #edf4ff, #edf4ff) bottom right / 50% 100% no-repeat;
+}
+
+.bgColorTBottom1 {
+    background: radial-gradient(circle at left top, #dae6ff, #dae6ff) top left / 50% 100% no-repeat,
+                radial-gradient(circle at right top, #dae6ff, #dae6ff) top right / 50% 100% no-repeat;
+}
+
+.bgColorTop2 {
+	background: radial-gradient(circle at left bottom, transparent 6px, #ffeeee 0) bottom left / 50% 100% no-repeat,
+		radial-gradient(circle at right bottom, transparent 6px, #ffeeee 0) bottom right / 50% 100% no-repeat;
+}
+
+.bgColorTBottom2 {
+	background: radial-gradient(circle at left top, transparent 6px, #ffd7d7 0) top left / 50% 100% no-repeat,
+		radial-gradient(circle at right top, transparent 6px, #ffd7d7 0) top right / 50% 100% no-repeat;
+}
+
+.bgColorTop3 {
+	background: radial-gradient(circle at left bottom, transparent 6px, #fff2e5 0) bottom left / 50% 100% no-repeat,
+		radial-gradient(circle at right bottom, transparent 6px, #fff2e5 0) bottom right / 50% 100% no-repeat;
+}
+
+.bgColorTBottom3 {
+	background: radial-gradient(circle at left top, transparent 6px, #ffe0c1 0) top left / 50% 100% no-repeat,
+		radial-gradient(circle at right top, transparent 6px, #ffe0c1 0) top right / 50% 100% no-repeat;
+}
+
+.bgColorTop4 {
+	background: radial-gradient(circle at left bottom, transparent 6px, #f3f3f3 0) bottom left / 50% 100% no-repeat,
+		radial-gradient(circle at right bottom, transparent 6px, #f3f3f3 0) bottom right / 50% 100% no-repeat;
+}
+
+.bgColorTBottom4 {
+	background: radial-gradient(circle at left top, transparent 6px, #ededed 0) top left / 50% 100% no-repeat,
+		radial-gradient(circle at right top, transparent 6px, #ededed 0) top right / 50% 100% no-repeat;
+}
+
+
+.connect_tip{
+	padding: 10px;
+}
+
+
+.chat-custom-right {
+	flex: 1;
+	/* #ifndef APP-NVUE */
+	display: flex;
+	/* #endif */
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.chat-custom-text {
+	font-size: 12px;
+	color: #999;
+}

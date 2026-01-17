@@ -1,0 +1,85 @@
+.container {
+  padding: 20rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  color: #2a4a7d;
+  margin-bottom: 20rpx;
+  margin-left: 10rpx;
+}
+
+.subtitle {
+  font-size: 26rpx;
+  color: #8c8c8c;
+  margin-bottom: 40rpx;
+  margin-left: 10rpx;
+}
+
+.package {
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.basic-package {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.silver-package {
+  background-color: #4a90e2;
+  color: #ffffff;
+}
+
+.gold-package {
+  background-color: #f5a623;
+  color: #ffffff;
+}
+
+.diamond-package {
+  background-color: #9b59b6;
+  color: #ffffff;
+}
+
+.package-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.package-name {
+  font-size: 40rpx;
+}
+
+.package-price {
+  font-size: 50rpx;
+  color: #ff6666;
+}
+
+.package-features {
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+  margin-bottom: 50rpx;
+}
+
+.feature {
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.checkmark {
+  color: #FF7F50; /* 这里是您想要的颜色 */
+  margin-right: 10rpx;
+}
+
+.next-button {
+  width: 150rpx;
+  margin-right: 10rpx;
+  background-color: #ffffff;
+  color: #ff6666;
+  border: none;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}

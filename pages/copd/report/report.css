@@ -1,0 +1,399 @@
+@import "/style/base/comm.css";
+
+.main {
+  padding: 20rpx;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* 报告头部 */
+.report-header {
+  margin: 20rpx auto; 
+  background-color: #fff;
+  width: 94.5%;
+  margin-top: 20rpx;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 0rpx;
+  margin-top: 10rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+.report-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 15rpx;
+  text-align: center;
+}
+.report-base-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx 30rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 报告模块通用样式 */
+.report-module { 
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  margin-top: 10rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+.module-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 20rpx;
+  border-left: 6rpx solid #3478F6;
+  padding-left: 15rpx;
+}
+
+/* 血氧卡片样式 */
+.spo2-card {
+  background-color: #e6f7f3;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+.spo2-value-area {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 10rpx;
+}
+.spo2-value {
+  font-size: 80rpx;
+  font-weight: bold;
+  margin-right: 10rpx;
+  color: #52c41a;
+}
+.spo2-label {
+  font-size: 32rpx;
+  color: #666;
+}
+.spo2-status {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  display: block;
+}
+.status-normal { color: #07c160; }
+.status-low { color: #ffab00; }
+.status-too-low { color: #ff4500; }
+.spo2-reference {
+  margin-top: 20rpx;
+}
+.reference-title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+.reference-range {
+  display: flex;
+  height: 60rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+.range-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 22rpx;
+}
+.range-section.normal { background-color: #07c160; }
+.range-section.low { background-color: #ffab00; }
+.range-section.too-low { background-color: #ff4500; }
+
+/* 波形图容器 */
+.chart-container {
+  width: 100%;
+  margin-bottom: 20rpx;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+}
+.lung-chart-container {
+  padding: 10rpx;
+  background-color: #f9f9f9;
+  border-radius: 8rpx;
+}
+.waveform-chart {
+  background-color: #f9f9f9;
+  border-radius: 8rpx;
+  padding: 15rpx;
+}
+.chart-title {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 10rpx;
+  padding-left: 10rpx;
+}
+.wave-chart, .lung-chart {
+  width: 100%;
+  display: block;
+}
+.wave-marker {
+  display: flex;
+  justify-content: space-between;
+  padding: 5rpx 10rpx;
+  font-size: 20rpx;
+  color: #999;
+}
+
+/* 数据网格 */
+.data-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+  margin-bottom: 20rpx;
+}
+.data-item {
+  flex: 1;
+  min-width: 180rpx;
+  background-color: #f5f8ff;
+  padding: 15rpx;
+  border-radius: 8rpx;
+}
+.data-label {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 5rpx;
+}
+.data-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+.warn {
+  color: #F63451;
+}
+
+/* 肺功能数据 */
+.lung-data {
+  background-color: #f9f9f9;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.lung-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15rpx 0;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+.lung-item:last-child {
+  border-bottom: none;
+}
+.lung-label {
+  font-size: 24rpx;
+  color: #333;
+}
+.lung-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+.lung-reference {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 10rpx;
+}
+.lung-diagnosis {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #07c160;
+}
+
+/* 分析框 */
+.analysis-box {
+  background-color: #fffef5;
+  border-left: 4rpx solid #FF9F43;
+  padding: 15rpx;
+  border-radius: 0 8rpx 8rpx 0;
+  margin-top: 15rpx;
+  margin-bottom: 10rpx;
+}
+.analysis-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #E67E22;
+}
+.analysis-content {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 40rpx;
+  margin-top: 5rpx;
+  text-align: justify;
+}
+
+/* 综合诊断模块 */
+.diagnosis-module {
+  background-color: #fffef5;
+  border: 1px solid #fff3cd;
+}
+.diagnosis-content {
+  margin-bottom: 20rpx;
+}
+.diagnosis-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #E67E22;
+  margin: 15rpx 0 5rpx;
+}
+.diagnosis-item {
+  font-size: 24rpx;
+  color: #333;
+  line-height: 45rpx;
+  display: block;
+  margin-bottom: 5rpx;
+  text-align: justify;
+}
+.doctor-info {
+  text-align: right;
+  font-size: 22rpx;
+  color: #999;
+  padding-top: 15rpx;
+  border-top: 1px dashed #eee;
+}
+.doctor-name {
+  margin-right: 30rpx;
+}
+
+.top_bar {
+  width: 100%;
+}
+
+/* date */
+.search-date {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  margin-left: 25rpx;
+}
+
+.search-date .date-title {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.search-date .date-group {
+  color: #666;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rpx 20rpx;
+  font-size: 29rpx;
+  background-color: #f9f9f9;
+}
+
+.search-date .text-line1 {
+  color: #999999;
+  margin: 0 18rpx;
+}
+
+.search-date .text-line2 {
+  color: #333333;
+}
+
+.search-date .search-date-picker {
+  width: 150rpx;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx; /* 卡片之间的间距 */
+  padding: 20rpx; /* 列表与边框的间距 */
+}
+
+/* 卡片容器 */
+.report-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 20rpx;
+  border-radius: 12rpx;
+  background-color: #ffffff; /* 卡片底色 */
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05); /* 轻微阴影 */
+  transition: transform 0.2s ease;
+}
+
+/* 点击时的轻微缩放反馈 */
+.report-card:active {
+  transform: scale(0.98);
+}
+
+/* 左侧时间区域 */
+.card-left {
+  flex: 1;
+}
+
+.info-time {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* 右侧状态区域 */
+.card-right {
+  display: flex;
+  align-items: center;
+}
+
+/* 状态容器 */
+.status-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 6rpx 12rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  gap: 10rpx; /* 图标与文字间距 */
+}
+
+/* 正常状态样式 */
+.status-normal {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* 异常状态样式 */
+.status-abnormal {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+/* 状态圆点图标 */
+.status-icon {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+/* 正常圆点颜色 */
+.status-normal .status-icon {
+  background-color: #4caf50;
+}
+
+/* 异常圆点颜色 */
+.status-abnormal .status-icon {
+  background-color: #f44336;
+}

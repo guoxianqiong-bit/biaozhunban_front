@@ -1,0 +1,57 @@
+@import "/style/base/comm.css";
+
+.content{
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top_bar {
+  width: 100%;
+  
+}
+
+/* date */
+.search-date {
+	width:100%;
+	display: flex;
+align-items: center;
+  padding: 0 20rpx;
+  margin-left: 25rpx;
+}
+
+.search-date .date-title {
+	font-size: 28rpx;
+	margin-right: 8rpx;
+}
+
+.search-date .date-group {
+	color: #888;
+	border: 1rpx solid #A4A6AE;
+	border-radius: 10rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5rpx 20rpx;
+	font-size: 29rpx;
+}
+
+.search-date .text-line1 {
+	color: #A4A6AE;
+	margin: 0 18rpx;
+}
+
+.search-date .text-line2 {
+	color: rgb(0, 0, 0, 0.8);
+}
+
+.search-date .search-date-picker {
+	width: 150rpx;
+}
+
+.card-content{
+  width: 100%;
+  margin-top: 20rpx;
+}

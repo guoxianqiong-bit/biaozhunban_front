@@ -1,0 +1,158 @@
+@import "/style/base/comm.css";
+
+.top_bar {
+  width: 100%;
+}
+
+/* date */
+.search-date {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  margin-left: 25rpx;
+}
+
+.search-date .date-title {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.search-date .date-group {
+  color: #666;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rpx 20rpx;
+  font-size: 29rpx;
+  background-color: #f9f9f9;
+}
+
+.search-date .text-line1 {
+  color: #999999;
+  margin: 0 18rpx;
+}
+
+.search-date .text-line2 {
+  color: #333333;
+}
+
+.search-date .search-date-picker {
+  width: 150rpx;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx; /* 卡片之间的间距 */
+  padding: 20rpx; /* 列表与边框的间距 */
+}
+
+/* 卡片容器 */
+.report-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 20rpx;
+  border-radius: 12rpx;
+  background-color: #ffffff; /* 卡片底色 */
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05); /* 轻微阴影 */
+  transition: transform 0.2s ease;
+} 
+
+/* 点击时的轻微缩放反馈
+.report-card:active {
+  transform: scale(0.98);
+}
+
+/* 左侧时间区域 */
+.card-left {
+  flex: 1;
+}
+
+.info-time {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* 右侧状态区域 */
+.card-right {
+  display: flex;
+  align-items: center;
+}
+
+/* 状态容器 */
+.status-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 6rpx 12rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  gap: 10rpx; /* 图标与文字间距 */
+}
+
+/* 正常状态样式 */
+.status-normal {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* 异常状态样式 */
+.status-abnormal {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+/* 状态圆点图标 */
+.status-icon {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+/* 正常圆点颜色 */
+.status-normal .status-icon {
+  background-color: #4caf50;
+}
+
+/* 异常圆点颜色 */
+.status-abnormal .status-icon {
+  background-color: #f44336;
+}
+
+.report-tag {
+  position: absolute;
+  top: 30rpx;
+  right: 0;
+  border-radius: 0;
+  text-align: center;
+  background-color: #4caf50; /* 标签条背景颜色改为绿色，传递积极感 */
+  color: #fff;
+  padding: 4px 12px;
+  transform: rotate(45deg);
+  font-size: 22rpx;
+}
+
+.time {
+  color: #666666; /* 中灰色文本 */
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+.report-info {
+  position: relative;
+  margin-bottom: 20rpx;
+  border: 1px solid #d4e2f0; /* 边框颜色调整为淡蓝色 */
+  background-image: linear-gradient(to top, #e9f4ff 0%, #ffffff 100%); /* 浅蓝渐变背景 */
+  border-radius: 16rpx; /* 更小的圆角，保持现代感 */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px, rgba(0, 0, 0, 0.05) 0px 4px 8px; /* 更轻盈的阴影 */
+  padding: 24rpx;
+  overflow: hidden;
+}
+.headline {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333; /* 深灰色标题 */
+}

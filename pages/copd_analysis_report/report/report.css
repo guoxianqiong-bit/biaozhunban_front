@@ -1,0 +1,26 @@
+
+.reason_txt::before,
+.reason_txt::after {
+  display: table-cell;
+  content: "";
+  width: 50%;
+  background: linear-gradient(#5CB85C, #5CB85C) repeat-x center; /* 柔和绿色 */
+  background-size: 0.1rem 0.1rem;
+}
+
+.reason_txt {
+  font-size: 32rpx;
+  display: table;
+  width: auto;
+  white-space: nowrap;
+  border-spacing: 0.5rem 0;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  margin-top: 28rpx;
+  color: #5CB85C !important; /* 字体颜色柔和绿色 */
+  cursor: text;
+}
+.card{
+  width: 95%;
+  margin: 15px auto;
+}
