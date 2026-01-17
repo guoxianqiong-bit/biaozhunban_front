@@ -1,0 +1,310 @@
+.copd-container {
+		width: 100%;
+		margin: 20rpx auto;
+		padding: 0rpx;
+		background-color: #ffffff;
+		/* 改为白色，简洁大方 */
+	}
+
+	/* 图表容器 */
+	.chart-container {
+		background-color: #fff;
+		border-radius: 12rpx;
+		padding: 10rpx;
+		box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+		margin-bottom: 10rpx;
+		height: 200px;
+		/* 原高度 */
+		width: 97%;
+	}
+
+	/* 分析和评估容器 */
+	.analysis-container {
+		background-color: #fff;
+		border-radius: 12rpx;
+		padding: 20rpx;
+		box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+	}
+
+	/* 标题 */
+	.section-title {
+		font-size: 24rpx;
+		/* 维持原有的字体大小 */
+		font-weight: bold;
+		color: #333;
+		margin-bottom: 10rpx;
+		margin-top: 20rpx;
+		text-align: center;
+		/* 添加此属性使文本居中 */
+		width: 100%;
+		/* 确保宽度是容器的100%，以便文本能居中 */
+	}
+
+	/* 信息项样式 */
+	.info-item {
+		display: flex;
+		justify-content: space-between;
+		padding: 15rpx 0;
+		border-bottom: 1rpx solid #e8e8e8;
+	}
+
+	.info-item:last-child {
+		border-bottom: none;
+	}
+
+	.info-label {
+		font-size: 20rpx;
+		color: #666;
+	}
+
+	.info-value {
+		font-size: 20rpx;
+		font-weight: bold;
+		color: #333;
+	}
+
+	.info-value.diagnosis.abnormal {
+		color: #f5222d;
+	}
+
+	.info-value.diagnosis.normal {
+		color: #52c41a;
+	}
+
+	.info-value.comparison {
+		display: flex;
+		align-items: center;
+	}
+
+	.threshold {
+		margin-left: 5rpx;
+	}
+
+	.threshold.large {
+		font-size: 28rpx;
+		font-weight: bold;
+	}
+
+	.threshold.small {
+		font-size: 16rpx;
+		font-weight: normal;
+	}
+
+	/* 进度条样式 */
+	.progress-bar {
+		display: flex;
+		margin-top: 10px;
+		width: 100%;
+		height: 60rpx;
+		/* 增加高度 */
+		border-radius: 30rpx;
+		/* 调整圆角半径 */
+		overflow: hidden;
+		margin-bottom: 20rpx;
+	}
+
+	.progress-segment {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		/* 移除背景颜色，使用动态背景 */
+	}
+
+	.segment-text {
+		font-size: 18rpx;
+		/* 增大字体 */
+		color: #fff;
+		text-align: center;
+	}
+
+	/* 指示器样式 */
+	.indicator-container {
+		position: relative;
+		width: 100%;
+		height: 30rpx;
+		/* 调整高度 */
+		margin-top: -15rpx;
+		/* 调整位置 */
+	}
+
+	.indicator {
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-left: 15rpx solid transparent;
+		/* 调整尺寸 */
+		border-right: 15rpx solid transparent;
+		border-bottom: 15rpx solid #000;
+		bottom: 0;
+		transform: translateX(-50%);
+	}
+
+	/* 提示信息 */
+	.progress-hint {
+		text-align: center;
+		margin-top: 10rpx;
+	}
+
+
+	.advice-container {
+		margin-top: 20px;
+		padding: 15px;
+		border: 1px solid;
+		border-radius: 8px;
+	}
+
+	.advice-container.mild {
+		background-color: #f6ffed;
+		/* 浅绿色 */
+		border-color: #b7eb8f;
+	}
+
+	.advice-container.moderate {
+		background-color: #fffbe6;
+		/* 浅黄色 */
+		border-color: #ffe58f;
+	}
+
+	.advice-container.severe {
+		background-color: #fff1f0;
+		/* 浅红色 */
+		border-color: #ffa39e;
+	}
+
+	.advice-container.very-severe {
+		background-color: #f9f0ff;
+		/* 浅紫色 */
+		border-color: #d3adf7;
+	}
+
+	.advice-title {
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.advice-content {
+		margin-top: 10px;
+		font-size: 16px;
+		line-height: 1.5;
+	}
+
+	.advice-title.mild {
+		color: #389e0d;
+	}
+
+	.advice-title.moderate {
+		color: #d48806;
+	}
+
+	.advice-title.severe {
+		color: #cf1322;
+	}
+
+	.advice-title.very-severe {
+		color: #531dab;
+	}
+
+	.advice-content.mild {
+		color: #52c41a;
+	}
+
+	.advice-content.moderate {
+		color: #faad14;
+	}
+
+	.advice-content.severe {
+		color: #f5222d;
+	}
+
+	.advice-content.very-severe {
+		color: #722ed1;
+	}
+
+	/* 外层容器：统一留一点上边距 */
+	.progress-hint-container {
+	  margin-top: 20rpx;
+	  display: flex;
+	  justify-content: center;
+	}
+	
+	/* 诊断提示卡片主体 */
+	.progress-hint-box {
+	  width: 92%;
+	  background-color: #ffffff;
+	  border-radius: 16rpx;
+	  padding: 24rpx;
+	  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+	  border: 1rpx solid #f0f0f0;
+	  box-sizing: border-box;
+	}
+	
+	/* 标题：图标 + 文本 */
+	.hint-title {
+	  display: flex;
+	  align-items: center;
+	  margin-bottom: 18rpx;
+	}
+	
+	.hint-icon {
+	  width: 32rpx;
+	  height: 32rpx;
+	  margin-right: 12rpx;
+	  border-radius: 4rpx;
+	}
+	
+	/* 标题文字 */
+	.hint-title text {
+	  font-size: 28rpx;
+	  font-weight: 600;
+	  color: #333;
+	}
+	
+	/* 文本信息：预计值 */
+	.hint-text {
+	  font-size: 26rpx;
+	  color: #666;
+	  margin-bottom: 12rpx;
+	  line-height: 40rpx;
+	}
+	
+	/* 高亮段落（真实值 + 分级） */
+	.hint-highlight {
+	  font-size: 26rpx;
+	  color: #444;
+	  line-height: 42rpx;
+	  margin-top: 6rpx;
+	  display: inline;   /* ← 改成 inline 或 block 都行 */
+	  white-space: nowrap; /* ← 禁止换行 */
+	}
+
+	
+	/* 真实数值高亮 */
+	.highlight {
+	  color: #3478f6; /* 采用你的主题蓝色 */
+	  font-weight: 600;
+	}
+	
+	/* 分级高亮 */
+	.severity {
+	  font-weight: 600;
+	  margin-left: 6rpx;
+	}
+	
+	/* 针对不同严重程度设置柔和颜色（不刺眼） */
+	.severity.mild {
+	  color: #52c41a;
+	}
+	
+	.severity.moderate {
+	  color: #faad14;
+	}
+	
+	.severity.severe {
+	  color: #ff4d4f;
+	}
+	
+	.severity.very-severe {
+	  color: #722ed1;
+	}
+     

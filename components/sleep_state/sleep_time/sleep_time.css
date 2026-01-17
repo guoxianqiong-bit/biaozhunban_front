@@ -1,0 +1,34 @@
+.container {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 400rpx;
+  margin-top: 20rpx;
+  background-color:snow;
+  border:1px solid #96c2f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 设置阴影 */
+} 
+
+.title{
+  display: flex;
+  font-size: 12px;
+  margin-top: 10rpx;
+  margin-left: -520rpx;
+  font-weight: 150px;
+}
+
+.charts{
+  width: 100%;
+  height: 90%;
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}

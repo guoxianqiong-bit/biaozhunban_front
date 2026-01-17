@@ -1,0 +1,134 @@
+.chart-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* 居中对齐整个组件内容 */
+	width: 100%;
+	background-color: #ffffff;
+	/* 更专业的背景色 */
+	border-radius: 10px;
+	border: 1px solid #96c2f1;
+	/* 更中性的边框颜色 */
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	/* 更轻微的阴影 */
+	margin-top: 20rpx;
+	margin-bottom: 20rpx;
+	padding: 10rpx;
+	/* 添加内边距 */
+	box-sizing: border-box;
+}
+
+.ec-container {
+	width: 100%;
+	height: 500rpx;
+	/* 固定图表高度，确保显示清晰 */
+	border-radius: 8px;
+}
+
+.stats-container {
+	margin-top: 16rpx;
+	display: flex;
+	justify-content: space-around;
+	/* 调整子元素间距均匀 */
+	align-items: center;
+	width: 100%;
+	/* 保持与父容器一致 */
+	gap: 20rpx;
+	/* 增加子元素间的间距 */
+	padding: 0 20rpx;
+	/* 增加左右边距，避免贴边 */
+}
+
+.stat-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* 居中对齐每个统计项 */
+	background-color: #f8f9fa;
+	width: 30%;
+	/* 默认背景色 */
+	border-radius: 8px;
+	padding: 8rpx 16rpx;
+	/* 减少内边距 */
+	margin: 0 10rpx;
+	/* 减少左右间距 */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	/* 轻微阴影 */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item:hover {
+	transform: translateY(-2px);
+	/* 鼠标悬停效果 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	/* 增强阴影 */
+}
+
+.stat-title {
+	font-size: 12px;
+	/* 调整字体大小 */
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 3px;
+	/* 减少下边距 */
+}
+
+.stat-value {
+	font-size: 16px;
+	/* 调整字体大小 */
+	font-weight: 700;
+	color: #555;
+}
+
+/* 根据状态类调整背景色和文字色 */
+.stat-item.healthy {
+	background-color: #e6ffed;
+	/* 绿色背景 */
+	border: 1px solid #34c759;
+	/* 深绿色边框 */
+}
+
+.stat-item.warning {
+	background-color: #fff4e6;
+	/* 黄色背景 */
+	border: 1px solid #ff9500;
+	/* 深黄色边框 */
+}
+
+.stat-item.critical {
+	background-color: #ffe6e6;
+	/* 红色背景 */
+	border: 1px solid #ff3b30;
+	/* 深红色边框 */
+}
+
+.stat-item.healthy .stat-value {
+	color: #34c759;
+	/* 绿色文字 */
+}
+
+.stat-item.warning .stat-value {
+	color: #ff9500;
+	/* 黄色文字 */
+}
+
+.stat-item.critical .stat-value {
+	color: #ff3b30;
+	/* 红色文字 */
+}
+
+/* 响应式设计优化 */
+@media (max-width: 768px) {
+	.stat-title {
+		font-size: 10px;
+	}
+
+	.stat-value {
+		font-size: 14px;
+	}
+
+	.stat-item {
+		padding: 6rpx 12rpx;
+		margin: 0 8rpx;
+	}
+}

@@ -1,0 +1,69 @@
+.container-breath {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: 100%;
+  height: 300rpx;
+  border-radius: 5%;
+  background-color:snow;
+  border:1px solid #96c2f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.breath-text {
+	margin-top: 1px;
+  font-size: 30rpx;
+  font-weight: 'bold';
+  text-align: center;
+}
+
+.card {
+  flex: 1; /* 让每个卡片均分父容器的宽度 */
+  margin: 10rpx; /* 设置卡片之间的间隔 */
+  padding: 0px; /* 设置卡片内部的内边距 */
+  background-color: white; /* 设置卡片的背景色为白色 */
+  border-radius: 9px; /* 设置卡片的边框圆角 */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	display: flex;
+
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px; /* 调整内边距，根据需要调整 */
+}
+
+
+.horizontal-cards {
+  display: flex;
+  flex-direction: row;
+  height: 16vh;
+}
+
+.margin-card {
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.breath_stop {
+	width: 115rpx;
+	height: 115rpx;
+	margin-top: 10rpx;
+}
+
+.text {
+	font-size: 20rpx;
+	margin-left:3rpx;
+	margin-top: 0rpx;
+}
+
+
+.icon {
+	width: 28rpx;
+	height: 28rpx;
+	margin-left: -28rpx;
+	margin-top: 7rpx;
+}

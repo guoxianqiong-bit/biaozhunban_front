@@ -1,0 +1,163 @@
+.container-ahi {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 450rpx;
+	border-radius: 16rpx;
+	margin-top: 20rpx;
+	background-color: #F8FAFD;
+	/* 柔和的浅灰蓝背景 */
+	border: 1px solid #96c2f1;
+	/* 边框颜色 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ahi-card1 {
+	flex: 1;
+	margin: 20rpx;
+	padding: 20rpx;
+	background-color: white;
+	border-radius: 16rpx;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ahi-card2 {
+	flex: 1;
+	margin: 20rpx;
+	padding: 20rpx;
+	background-color: #F9F7F3;
+	border-radius: 16rpx;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	margin-top: 20rpx;
+}
+
+.bar-container {
+	position: relative;
+	margin-top: 20rpx;
+}
+
+.bar-card {
+	display: flex;
+	width: 100%;
+	height: 50px;
+	/* 保持条形的高度 */
+	border-radius: 25rpx;
+	overflow: hidden;
+	background-color: #F0F4FF;
+	/* 柔和背景色 */
+}
+
+.bar-section {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 28rpx;
+	font-weight: bold;
+}
+
+.normal {
+	background-color: #A8D5BA;
+	/* 柔和绿色 */
+}
+
+.mild {
+	background-color: #FFD59A;
+	/* 柔和浅橙 */
+}
+
+.moderate {
+	background-color: #FFAB76;
+	/* 柔和橙色 */
+}
+
+.severe {
+	background-color: #FF6F61;
+	/* 柔和红色 */
+}
+
+.index-move {
+	width: 50rpx;
+	/* 滑块大小 */
+	height: 50rpx;
+	transition: margin-left 0.3s ease;
+	/* 平滑动画 */
+}
+
+.card1-text1 {
+	font-size: 30rpx;
+	color: #4A4A4A;
+	/* 深灰色 */
+	margin-top: 20rpx;
+}
+
+.ahi-text1 {
+	font-size: 36rpx;
+	color: #34495E;
+	/* 深蓝色 */
+	font-weight: bold;
+}
+
+.ahi-text2 {
+	font-size: 28rpx;
+	color: #7C8B99;
+	/* 中等灰色 */
+	line-height: 40rpx;
+
+	.bar-container {
+		position: relative;
+		margin-top: 20rpx;
+	}
+
+	.bar-card {
+		display: flex;
+		width: 100%;
+		height: 50px;
+		border-radius: 25rpx;
+		overflow: hidden;
+		background-color: #F0F4FF;
+		/* 背景色 */
+	}
+
+	.bar-section {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		font-size: 28rpx;
+		font-weight: bold;
+	}
+
+	.normal {
+		background-color: #A8D5BA;
+		/* 柔和绿色 */
+	}
+
+	.mild {
+		background-color: #FFD59A;
+		/* 柔和浅橙 */
+	}
+
+	.moderate {
+		background-color: #FFAB76;
+		/* 柔和橙色 */
+	}
+
+	.severe {
+		background-color: #FF6F61;
+		/* 柔和红色 */
+	}
+
+	.index-move {
+		position: absolute;
+		bottom: -25px;
+		/* 箭头位置调整 */
+		width: 50rpx;
+		/* 滑块大小 */
+		height: 50rpx;
+		transition: margin-left 0.3s ease;
+		/* 平滑动画 */
+	}
+}

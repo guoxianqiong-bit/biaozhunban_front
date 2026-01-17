@@ -1,0 +1,64 @@
+.paginationBox {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.totalBox {
+  color: #606266;
+  height: 48rpx;
+  line-height: 48rpx;
+}
+
+.selectPageBox {
+  border: 2rpx solid #dcdfe6;
+  margin: 0rpx 14rpx;
+  color: #606266;
+  padding: 0rpx 18rpx;
+  text-align: center;
+  height: 44rpx;
+  line-height: 44rpx;
+  border-radius: 4rpx;
+}
+
+.contantBox {
+  display: flex;
+}
+
+.updownPageBox,
+.pageBox {
+  padding: 0rpx 14rpx;
+  color: rgb(25, 137, 250);
+  background-color: rgb(244, 244, 245);
+  height: 48rpx;
+  line-height: 48rpx;
+  border-radius: 4rpx;
+}
+
+.pageBox {
+  margin: 0rpx 10rpx;
+}
+
+.intBox {
+  margin-left: 14rpx;
+  margin-right: 10%;
+  color: #606266;
+  display: flex;
+  align-items: center;
+}
+
+.intBox input {
+  height: 44rpx;
+  line-height: 44rpx;
+  min-height: 44rpx;
+}
+
+.intConBox {
+  border: 2rpx solid #dcdfe6;
+  border-radius: 4rpx;
+  width: 60rpx;
+  text-align: center;
+  margin: 0rpx 6rpx;
+}

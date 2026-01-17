@@ -1,0 +1,124 @@
+	.blood-oxygen-container {
+		width: 95%;
+		padding: 20rpx;
+		border-radius: 16rpx;
+		box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.05);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 20rpx;
+	}
+
+	/* 背景颜色和字体颜色根据血氧水平动态变化 */
+	.normal {
+		background-color: #e6fffb;
+	}
+
+	.normal .oxygen-value,
+	.normal .status-text {
+		color: #52c41a;
+	}
+
+	.low {
+		background-color: #fff7e6;
+	}
+
+	.low .oxygen-value,
+	.low .status-text {
+		color: #faad14;
+	}
+
+	.very-low {
+		background-color: #fff1f0;
+	}
+
+	.very-low .oxygen-value,
+	.very-low .status-text {
+		color: #f5222d;
+	}
+
+	.oxygen-display {
+		display: flex;
+		align-items: baseline;
+		justify-content: center;
+	}
+
+	.oxygen-value {
+		font-size: 70rpx;
+		font-weight: bold;
+		margin-right: 10rpx;
+	}
+
+	.oxygen-label {
+		font-size: 28rpx;
+		color: #666666;
+	}
+
+	.oxygen-status {
+		margin-top: 10rpx;
+		text-align: center;
+	}
+
+	.status-text {
+		font-size: 24rpx;
+		font-weight: bold;
+	}
+
+	/* 新增过渡线条样式 */
+	.divider {
+		width: 80%;
+		height: 2rpx;
+		background-color: #d9d9d9;
+		margin: 24rpx auto;
+	}
+
+	.reference-range {
+		width: 100%;
+	}
+
+	.range-title {
+		margin-bottom: 10rpx;
+		align-items: center;
+		justify-content: center;
+		display: flex;
+	}
+
+	.title-text {
+		font-size: 24rpx;
+		font-weight: bold;
+		color: #333333;
+	}
+
+	.range-bar {
+		display: flex;
+		width: 100%;
+		height: 60rpx;
+		border-radius: 40rpx;
+		overflow: hidden;
+	}
+
+	.range-segment {
+		flex: 1;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+
+	.segment-text {
+		font-size: 20rpx;
+		color: #ffffff;
+		text-align: center;
+		white-space: pre-line;
+	}
+
+	.normal-segment {
+		background-color: #52c41a;
+	}
+
+	.low-segment {
+		background-color: #faad14;
+	}
+
+	.very-low-segment {
+		background-color: #f5222d;
+	}

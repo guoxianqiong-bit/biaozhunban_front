@@ -1,0 +1,13 @@
+.container-stop {
+	display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: 100%;
+  height: 26vh;
+  border-radius: 5%;
+  margin-top: 20rpx;
+  background-color:snow;
+  border:1px solid #96c2f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}

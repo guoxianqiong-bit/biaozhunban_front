@@ -1,0 +1,38 @@
+.content{
+  font-size: 30rpx;
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.bottom{
+margin-top: 25rpx;
+display: flex;
+flex-direction: column;
+}
+
+.topic{
+font-weight: bold;
+}
+
+.top{
+display: flex;
+flex-direction: column;
+}
+
+.text-css{
+text-align: justify;
+}
+
+.doctor{
+font-weight: bold;
+margin-top: 30rpx;
+display: flex;
+justify-content: flex-end;
+align-items: flex-start;
+}
+
+.text-container {
+text-align: left;
+display: flex;
+flex-direction: column;
+}
