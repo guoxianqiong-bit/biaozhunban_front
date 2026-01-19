@@ -136,7 +136,7 @@ import BlowTest from './BlowTest.vue';
 export default {
   data() {
     return {
-      showVideoPopup: true,          // 进入页面先弹出视频
+      showVideoPopup: false,          // 进入页面先弹出视频
       isAnimating: false,            // 弹窗是否在执行飞行动画
       popupTransform: 'translate(0px, 0px) scale(1, 1)',
 
@@ -166,7 +166,9 @@ export default {
 	  showBlowTest: false,
 	  flowData : [],
 	  blowTestMode : '',
-	  blowTestRule :{}
+	  blowTestRule :{},
+	  
+	   detectAudio: null   // ⭐ 用来控制检测中的 MP3
     }
   },
   
@@ -183,6 +185,45 @@ export default {
   },
 
   methods: {
+	  /* ▶️ 开始播放检测 MP3（循环） */
+	  playDetectMp3() {
+	    // 防止重复创建
+	    this.stopDetectMp3();
+	  
+	    // #ifdef APP-PLUS
+	    const audio = uni.createInnerAudioContext();
+	    this.detectAudio = audio;
+	  
+	    audio.autoplay = true;
+	    audio.loop = true;
+	    audio.volume = 1.0;
+	  
+	    // ⭐ 关键：直接使用 _www 下的静态资源
+	    audio.src = '_www/static/tarBarIcon/breath.mp3';
+	  
+	    audio.onPlay(() => {
+	      console.log('[MP3] 检测语音开始播放');
+	    });
+	  
+	    audio.onError(err => {
+	      console.error('[MP3] 播放失败', err);
+	    });
+	  
+	    audio.play();
+	    // #endif
+	  },
+	  
+	  /* ⏹ 停止检测 MP3 */
+	  stopDetectMp3() {
+	    if (this.detectAudio) {
+	      try {
+	        this.detectAudio.stop();
+	        this.detectAudio.destroy();
+	      } catch (e) {}
+	      this.detectAudio = null;
+	    }
+	  },
+
 	  onEnded() {
 	    const ctx = uni.createVideoContext('popupDemoVideo')
 		const ctx2 = uni.createVideoContext('demoVideo')
@@ -371,6 +412,14 @@ export default {
       this.showResult = false
       this.failedOnce = false
       this.currentStep = 0
+	  // 🔇 先停掉 TTS，避免抢音频焦点
+	  stopSpeak();
+	  
+	  // ⏱ 延迟一点点，确保系统释放音频焦点
+	  setTimeout(() => {
+	    this.playDetectMp3();
+	  }, 300);
+
       this.countdown = 20
       const ts = uni.getStorageSync('monitorStartTime')
       const fileName = `flow_${ts}.txt`
@@ -395,6 +444,8 @@ export default {
 
         this.detecting = false
         useCommandStore().sendCommand('STOP')
+		this.stopDetectMp3();
+
         
         const ts = uni.getStorageSync('monitorStartTime')
         const fileName = `flow_${ts}.txt`
@@ -794,6 +845,8 @@ export default {
 
     /* 重试吹气 */
     retryBlow() {
+	 this.stopDetectMp3();
+	 
       this.detecting = false
       this.showResult = false
       this.failedOnce = true
@@ -819,6 +872,7 @@ export default {
       clearTimeout(this.timer2)
       this.timer2 = null
     }
+	  this.stopDetectMp3();
     stopSpeak() 
   },
 

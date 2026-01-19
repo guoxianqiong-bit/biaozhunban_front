@@ -162,6 +162,7 @@ import EcgCheck from './deviceList_ecg.vue';
 import BreathCheck from './deviceList_breath.vue';
 import { useCommandStore } from '@/stores/commandStore';
 import { speak,stopSpeak} from '../../utils/tts';
+import { request } from "@/utils/httpUtils.js"; // 确保引入 request 用于获取用户信息
 
 export default {
   name: 'HealthCheckModal',
@@ -187,6 +188,73 @@ export default {
   },
 
   methods: {
+	  // 初始化数据
+	      initDataByVersion() {
+	        const version = uni.getStorageSync('APP_VERSION_MODE') || 'STANDARD';
+	        
+	        if (version === 'STANDARD') {
+	          // === 标准版：拉取注册信息 ===
+	          // 尝试从缓存获取 userInfo (如果在登录或 editInfo 时存过)
+	          // 假设 login 时存了 'userInfo'，如果没有，建议调用 API 获取
+	          const cachedUser = uni.getStorageSync('userInfo');
+	          
+	          if (cachedUser) {
+	             this.fillForm(cachedUser);
+	          } else {
+	             // 如果缓存没有，尝试调用接口 (可选，根据您实际架构)
+	             this.fetchUserInfo();
+	          }
+	        } else {
+	          // === 社区版：清空表单，允许自由录入 ===
+	          this.userInfo = { name: '', sex: '', age: '', height: '', weight: '' };
+	        }
+	      },
+	  
+	      // 辅助方法：调用API获取用户信息 (参考 editInfo.vue 的逻辑)
+	      fetchUserInfo() {
+	        let obj = {
+	          method: "GET",
+	          showLoading: false, // 静默加载，不打扰用户
+	          url: `/user/getUserInfo`,
+	          data: {},
+	        };
+	        request(obj).then(res => {
+	          if(res.code === 200 && res.data) {
+	             // 注意：接口返回的数据结构可能需要转换（比如 birthTime 转 age）
+	             const data = res.data;
+	             // 计算年龄
+	             let age = '';
+	             if (data.birthTime) {
+	               const birthDate = new Date(data.birthTime);
+	               const today = new Date();
+	               age = today.getFullYear() - birthDate.getFullYear();
+	             }
+	             
+	             const formData = {
+	               name: data.name || '',
+	               sex: data.sex || '',
+	               age: age || '', 
+	               height: data.height || '',
+	               weight: data.weight || ''
+	             };
+	             this.fillForm(formData);
+	          }
+	        }).catch(err => {
+	          console.log("获取用户信息失败，转为手动输入", err);
+	        });
+	      },
+	  
+	      fillForm(data) {
+	        this.userInfo = {
+	          name: data.name || '',
+	          sex: data.sex || '',
+	          age: data.age || '',
+	          height: data.height || '',
+	          weight: data.weight || ''
+	        };
+	      },
+	      
+	    
 	goToPrevStep() {
 	  if (this.currentStep > 1) {
 	    this.currentStep--;
@@ -258,6 +326,7 @@ export default {
   mounted() {
 	stopSpeak()
     speak("第一步，请开始填写检测前的基本信息")
+	this.initDataByVersion();
   },
 
 };
