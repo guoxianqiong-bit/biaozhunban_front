@@ -76,6 +76,15 @@
 	        <text class="text-black">关于我们</text>
 	      </view>
 	    </view>
+		<view class="item arrow" @click="url(`/pages/version/version`)">
+		      <view class="content">
+		        <text class="icon-refresh my-icon-project text-orange"></text>
+		        <text class="text-black">版本切换</text>
+		      </view>
+		      <view class="action">
+		         <text class="text-grey text-sm">{{ appVersionName }}</text>
+		      </view>
+		    </view>
 	    <view class="item arrow" @click="bindSetTap">
 	      <view class="content">
 	        <text class="icon-settings my-icon-project text-grey"></text>
@@ -98,9 +107,15 @@
 		data() {
 			return {
 				isLogin:true,
-				session: null // 存储 ONNX 模型的会话对象
+				session: null ,// 存储 ONNX 模型的会话对象
+				appVersionName: '标准版' // 用于显示当前状态
 			}
 		},
+		onShow() {
+		    // 每次进入页面更新显示的文字
+		    const ver = uni.getStorageSync('APP_VERSION_MODE');
+		    this.appVersionName = (ver === 'COMMUNITY') ? '社区版' : '标准版';
+		  },
 		methods: {
 			url(url){
 				uni.navigateTo({

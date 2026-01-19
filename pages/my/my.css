@@ -286,3 +286,61 @@
 	font-size: 30rpx;
 }
 
+/* 仿银行卡片风格 */
+.version-card {
+  background-color: #ffffff;
+  margin: 20rpx;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+}
+
+.version-header {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.version-switch-container {
+  display: flex;
+  background-color: #f5f7fa; /* 浅灰底色 */
+  border-radius: 12rpx;
+  padding: 8rpx;
+}
+
+.version-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16rpx 0;
+  border-radius: 10rpx;
+  transition: all 0.3s;
+}
+
+.version-item.active {
+  background-color: #ffffff; /* 选中变白，悬浮感 */
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.v-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 6rpx;
+}
+
+.version-item.active .v-title {
+  color: #2979ff; /* 选中后的主题色，可根据你App的主色调修改 */
+}
+
+.v-desc {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.version-item.active .v-desc {
+  color: #2979ff;
+}
