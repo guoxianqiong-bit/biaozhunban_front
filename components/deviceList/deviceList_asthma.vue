@@ -37,10 +37,10 @@
         <view v-if="item.isViewRule" class="device-status-container">
           <uni-tag text="设备状态：已绑定" type="success" />
           <uni-tag 
-            @click="unbindDevice(item)"  
-            text="取消绑定"
-            type="danger"
-            class="unbind-uni-tag"
+            @click="unbindDevice(item)" 
+            text="取消绑定" 
+            type="danger" 
+            class="unbind-uni-tag" 
           />
         </view>
       </view>
@@ -48,7 +48,7 @@
     
     <HealthCheckModal
       v-if="showCheckModal"
-      :need-ecg="isneedECG"       
+      :need-ecg="isneedECG"
       @close="endWindow()"
       @complete="endDetection()"
     />
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import HealthCheckModal from './deviceList_HealthCheck.vue'; 
+import HealthCheckModal from './deviceList_HealthCheck.vue';
 import { removeSubstring } from "@/utils/strFormat.js"
 import { request } from "@/utils/httpUtils.js";
 
@@ -100,6 +100,12 @@ export default {
       this.$emit("view-rules", item);
     },
     startDetection() {
+      // 检查连接状态
+      if (!this.isConnected) {
+        uni.showToast({ title: '请先连接蓝牙', icon: 'none' });
+        return;
+      }
+      // 通知父组件或直接跳转
       this.$emit("start-detection");
     },
     endDetection() {
@@ -116,7 +122,6 @@ export default {
         success: async (res) => {
           if (!res.confirm) return;
           const payload = { deviceSerialCode: serialCode };
-          // 使用统一解绑接口
           let obj = {
             method: "POST",
             showLoading: true,
@@ -147,7 +152,6 @@ export default {
 </script>
 
 <style scoped>
-/* 原有样式保持不变 */
 .colorSet1 .deviceTop {
   background: radial-gradient(circle at left bottom, #e0f7fa, #e0f7fa);
 }
@@ -201,24 +205,18 @@ export default {
   transform: rotate(135deg);
 }
 
-/* 核心优化：设备状态容器 - 两端对齐 */
 .device-status-container {
   display: flex;
-  justify-content: space-between; /* 设备状态左，解绑按钮右 */
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 0 0 0; /* 和蓝牙tag区域间距统一 */
-  gap: 10px; /* 最小间距，防止挤在一起 */
+  padding: 10px 0 0 0;
+  gap: 10px;
 }
 
-/* 关键：匹配蓝牙未连接tag的长度 + 红色danger样式优化 */
 .unbind-uni-tag {
-  /* 强制宽度匹配「蓝牙未连接」tag（实测蓝牙未连接tag宽度约80px） */
   width: 73.7px;
-  /* 保证文字居中，和蓝牙tag一致 */
   text-align: center;
-  /* 移除默认多余间距，精准匹配长度 */
   padding: 0 !important;
-  /* 保持和其他tag一致的字号 */
   font-size: 12px !important;
   border: 1px solid #f53f3f !important;
   background-color: #f53f3f !important;
@@ -226,7 +224,6 @@ export default {
   line-height: 22px !important;
 }
 
-/* 可选：点击态优化（增强交互） */
 .unbind-uni-tag:active {
   opacity: 0.8;
 }
