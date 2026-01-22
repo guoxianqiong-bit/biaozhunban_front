@@ -135,13 +135,21 @@ export default {
           if (!res.confirm) return;
           const payload = { deviceSerialCode: serialCode };
           const token = uni.getStorageSync("token");
-          let obj = {
-            method: "POST",
-            showLoading: true,
-            url: `/deviceUse/failDevice`,
-            data: payload,
-            message: "正在申请解绑" 
-          }
+          // let obj = {
+          //   method: "POST",
+          //   showLoading: true,
+          //   url: `/deviceUse/failDevice`,
+          //   data: payload,
+          //   message: "正在申请解绑" 
+          // }
+		  let obj = {
+		    method: "POST",
+		    showLoading: true,
+		    url: `/device/unbind`,   // ✅ 对应 DeviceController
+		    data: payload,               // ✅ 后端不需要任何参数
+		    message: "正在解绑设备"
+		  }
+
           request(obj).then(res => {
             console.log("📌 后端响应 =", res);
             if (res.code === 200) {
