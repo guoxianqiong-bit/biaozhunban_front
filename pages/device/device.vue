@@ -1,23 +1,38 @@
 <template>
 	<view class="main">
+<!-- 未绑定任何设备提示 -->
+<view
+  class="notice-container"
+  v-if="!isExistSleepDevice && !isExistCOPDDevice && !isExistAsthmaDevice"
+>
+  <view class="notice-title notice-title-warn">
+    设备使用温馨提示
+  </view>
 
-		<view class="notice_info" v-if="!isExistSleepDevice && !isExistCOPDDevice" style="width: 95%; margin: 0 auto;">
-			<uni-section title="设备使用温馨提示" type="line">
-				<!-- 未绑定设备的提示 -->
-				<uni-notice-bar background-color="#fff3cd" color="#856404"
-					text="您好，您暂未绑定监测设备，请扫描设备二维码进行审核绑定，医院审核通过后方可进行离院监测。" />
-			</uni-section>
-		</view>
+  <uni-notice-bar
+    background-color="#fff3cd"
+    color="#856404"
+    text="您好，您暂未绑定监测设备，请扫描设备二维码进行绑定，方可进行离院监测。"
+  />
+</view>
+
 
 		<view class="sleep_device">
-			<view class="notice_info" v-if="isExistSleepDevice" style="width: 95%; margin: 0 auto;">
-				<uni-section title="睡眠监测设备使用温馨提示" type="line">
-					<!-- 已绑定设备但未连接的提示 -->
-					<uni-notice-bar background-color="#e3f2fd" color="#0d47a1"
-						text="睡眠监测设备未连接时，请先连接设备，整夜睡眠时长需大于5小时，才是有效检测时长。否则系统将不检测此次睡眠情况。" />
-				</uni-section>
+			<!-- 睡眠监测设备提示 -->
+			<view class="notice-container" v-if="isExistSleepDevice">
+			  <view class="notice-title notice-title-sleep">
+			    睡眠监测设备使用温馨提示
+			  </view>
+			
+			  <uni-notice-bar
+			    background-color="#e3f2fd"
+			    color="#0d47a1"
+			    text="请先连接睡眠检测设备，监测整夜睡眠时长需大于5小时，否则系统将不记录此次睡眠情况。"
+			  />
 			</view>
-			<view class="device_info" style="margin-top: 15px;">
+
+
+			<view class="device_info" >
 				<view>
 					<device_List :devices="sleepDeviceInfos" :isConnected="isConnectedSleep"
 						:isStartdetect="isStartSleepdetect" :recentUpSleepTime="recentUpSleepTime"
@@ -38,15 +53,21 @@
 		</view>
 
 		<view class="copd_device">
-			<view class="notice_info" v-if="isExistCOPDDevice" style="width: 95%; margin: 0 auto;">
-				<uni-section title="慢阻肺检测设备使用温馨提示" type="line"
-					:title-style="{ color: '#4E4E4E', fontSize: '16px', fontWeight: 'bold' }">
-
-					<!-- 已绑定但未连接设备提示 -->
-					<uni-notice-bar background-color="#E8F5E9" color="#2E7D32" text="慢阻肺检测未连接时，请先连接设备，请严格按照设备用法使用。" />
-				</uni-section>
+			<!-- 慢阻肺设备提示 -->
+			<view class="notice-container" v-if="isExistCOPDDevice">
+			  <view class="notice-title notice-title-copd">
+			    慢阻肺检测设备使用温馨提示
+			  </view>
+			
+			  <uni-notice-bar
+			    background-color="#E8F5E9"
+			    color="#2E7D32"
+			    text="请先连接慢阻肺检测设备，并严格按照设备说明使用。"
+			  />
 			</view>
-			<view class="device_info" style="margin-top: 15px;">
+
+
+			<view class="device_info" >
 				<view>
 					<device_List_copd :devices="COPDDeviceInfos" :isConnected="isConnectedCOPD" :showCheckModal="showCheckModalCOPD" 
 						:isStartdetect="startCOPD" :recentUpSleepTime="recentUpCOPDTime"
@@ -69,7 +90,43 @@
 			</view>
 
 		</view>
-
+          <view class="asthma_device">
+          		<!-- 哮喘设备提示 -->
+          		<view class="notice-container" v-if="isExistAsthmaDevice">
+          		  <view class="notice-title notice-title-asthma">
+          		    哮喘检测设备使用温馨提示
+          		  </view>
+          		
+          		  <uni-notice-bar
+          		    background-color="#E0F2F1"
+          		    color="#00695C"
+          		    text="请先连接哮喘检测设备，并严格按照设备说明使用。"
+          		  />
+          		</view>
+          			<view class="device_info" >
+          				<view>
+          					<device_List_asthma 
+          						:devices="AsthmaDeviceInfos" 
+          						:isConnected="isConnectedAsthma" 
+          						:showCheckModal="showCheckModalAsthma" 
+          						:isStartdetect="startAsthma" 
+          						:recentUpSleepTime="recentUpAsthmaTime"
+          						:userId="userId" 
+          						@start-detection="startAsthmaDetection"
+          						@end-detection="endAsthmaDetection"
+          						@end-window="confirmExitAsthmaCheck"
+          						@view-rules="viewRules" 
+          						@unbind-success="handleAsthmaUnbindSuccess"
+          					/>
+          					<apply_Device :applyDevices="applyAsthmaDeviceInfos" />
+          				</view>
+          			</view>
+          
+          			<view class="notice_detect" v-if="isStartAsthmadetect">
+          				<uni-notice-bar show-icon scrollable color="#7f170e" background-color="white" 
+          					text="哮喘检测已经开始,请正确使用检测设备,并保持与手机的连接,请勿退出APP。" />
+          			</view>
+          		</view>
 
 		<view class="bluetooth_connect">
 
@@ -98,17 +155,33 @@
 					</uni-list-chat>
 				</uni-list>
 			</uni-drawer>
+			
+			<uni-drawer ref="asthma_showLeft" mode="left" :width="320" @change="change($event,'asthma_showLeft')">
+							<view class="connect_tip">
+								<uni-section class="mb-10" title="哮喘检测仪设备蓝牙连接" sub-title="请确保手机蓝牙已开启,系统将自动搜索到哮喘检测仪蓝牙展示在下方,点击即可连接!"
+									type="line"></uni-section>
+							</view>
+			
+							<uni-list :border="true" v-for="(item,index) in bluetoothInfos" :key="index">
+								<uni-list-chat clickable @click="startConnectAsthmaBluetooth(item.deviceId)" :title="item.deviceName"
+									avatar="/static/images/device/lanya.png" :note="item.deviceId" badge-positon="left">
+								</uni-list-chat>
+							</uni-list>
+						</uni-drawer>
 		</view>
 		<uni-fab ref="fab" :pattern="pattern_add" horizontal="right" @click="scanCode" />
-		<uni-fab v-if="isExistSleepDevice || isExistCOPDDevice" ref="fab" :pattern="pattern_blue" horizontal="left"
-			:content="fabContent" :direction="'horizontal'" @trigger="handleFabClick" />
-
+		<!-- <uni-fab v-if="isExistSleepDevice || isExistCOPDDevice" ref="fab" :pattern="pattern_blue" horizontal="left"
+			:content="fabContent" :direction="'horizontal'" @trigger="handleFabClick" /> -->
+       <uni-fab v-if="isExistSleepDevice || isExistCOPDDevice || isExistAsthmaDevice" ref="fab" :pattern="pattern_blue" horizontal="left"
+           :content="fabContent" :direction="'horizontal'" @trigger="handleFabClick" />
 
 
 	</view>
 </template>
 
 <script>
+	import device_List_asthma from "@/components/deviceList/deviceList_asthma.vue"; // 新组件
+	import {appendAsthmaDataToFile, uploadAsthmaFilesToOss} from "../../utils/bluetoothUtil_asthma.js"; // 新工具
     import { speak,stopSpeak } from "@/utils/tts.js"
 	import { watch, getCurrentInstance } from 'vue'
 	import { useCommandStore } from '@/stores/commandStore'
@@ -162,7 +235,8 @@
 			device_List,
 			device_List_copd,
 			apply_Device,
-			HealthCheckModal
+			HealthCheckModal,
+			device_List_asthma
 		},
 	setup() {
 		const instance = getCurrentInstance()
@@ -222,7 +296,14 @@
 						selectedIconPath: '/static/images/icon/manzufei-active.png', // 选中时的图标路径
 						text: '慢阻肺',
 						active: false
-					}
+					},
+					{
+					      
+					        iconPath: '/static/images/icon/xiaochuan.png', 
+					        selectedIconPath: '/static/images/icon/xiaochuan-active.png',
+					        text: '哮喘',
+					        active: false
+					    }
 				],
                 //是否需要心电检测
                 needECG: false,
@@ -290,39 +371,51 @@
 				noticeBlueText: 'SEND_BEGIN',
                 copdBlueComannd: ['MAX','ECG','FLOW','STOP'],
 				comannd_index:0,
-				speakFlag: 1
+				speakFlag: 1,
+				
+		// --- 新增：哮喘相关变量 ---
+		        isExistAsthmaDevice: false,
+		        AsthmaDeviceInfos: [],
+		        applyAsthmaDeviceInfos: [],
+		        isConnectedAsthma: false,
+		        isStartAsthmadetect: false,
+		        recentUpAsthmaTime: '',
+		        startAsthmaTimeTamp: '',
+		        startAsthma: false,
+		        showCheckModalAsthma: false,
+		        bleAsthmaDataBuffer: '',
 			}
 		},
 		
-		onShow() {
-		    // 进入页面时播报
-		    stopSpeak()
-			if(this.speakFlag>1&&!this.showCheckModalCOPD){
-				if (this.isExistSleepDevice && !this.isExistCOPDDevice) {
-				    speak("已绑定睡眠设备，可点击左下角连接设备，也可点击右下角加号扫码绑定新设备")
-				} else if (!this.isExistSleepDevice && this.isExistCOPDDevice) {
-				    speak("已绑定慢阻肺设备，可点击左下角连接设备，也可点击右下角加号扫码绑定新设备")
-				} else if (this.isExistSleepDevice && this.isExistCOPDDevice) {
-				    speak("已绑定设备，可点击左下角连接慢阻肺或睡眠设备")
-				} else {
-				    speak("当前无绑定的设备，请点击右下角加号扫码绑定设备")
+	
+	onShow() {
+				// 停止上一轮播报
+				stopSpeak()
+				
+				// 修改这里：只要有 睡眠 或 慢阻肺 或 哮喘 任意一个，就视为已绑定
+				if (this.speakFlag > 1 && !this.showCheckModalCOPD) {
+					if (this.isExistSleepDevice || this.isExistCOPDDevice || this.isExistAsthmaDevice) {
+						speak("已绑定检测设备，可点击左下角连接设备")
+					} else {
+						speak("当前无绑定的设备，请点击右下角加号扫码绑定设备")
+					}
 				}
-			}
-		    this.speakFlag++;
-		  },
-		  async onReady(){
-			  await this.getBindDeviceInfos(), 
-			  stopSpeak()
-			  if (this.isExistSleepDevice && !this.isExistCOPDDevice) {
-			      speak("已绑定睡眠设备，可点击左下角连接设备，也可点击右下角加号扫码绑定新设备")
-			  } else if (!this.isExistSleepDevice && this.isExistCOPDDevice) {
-			      speak("已绑定慢阻肺设备，可点击左下角连接设备，也可点击右下角加号扫码绑定新设备")
-			  } else if (this.isExistSleepDevice && this.isExistCOPDDevice) {
-			      speak("已绑定设备，可点击左下角连接慢阻肺或睡眠设备")
-			  } else {
-			      speak("当前无绑定的设备，请点击右下角加号扫码绑定设备")
-			  }
-		  },
+				this.speakFlag++;
+			},
+			
+		async onReady() {
+					// 等待获取最新绑定列表
+					await this.getBindDeviceInfos()
+					
+					stopSpeak()
+					
+					// 修改这里：加上 isExistAsthmaDevice 的判断
+					if (this.isExistSleepDevice || this.isExistCOPDDevice || this.isExistAsthmaDevice) {
+						speak("已绑定检测设备，可点击左下角连接设备")
+					} else {
+						speak("当前无绑定的设备，请点击右下角加号扫码绑定设备")
+					}
+				},
 		  // 页面隐藏（跳转到其他页面）
 		  onHide() {
 		    stopSpeak(); // 停止播报
@@ -330,8 +423,166 @@
 		  // 页面卸载（关闭页面）
 		  onUnload() {
 		    stopSpeak(); // 停止播报
+			uni.$off('stop-asthma-detection-from-child');
 		  },
 		methods: {
+			         handleChildStopRequest() {
+			                 console.log("父页面收到停止请求，开始执行结束流程");
+			                 // 直接调用你原本写好的结束方法
+			                 this.endAsthmaDetection();
+			             },
+						/**
+						 * 1. 拼包函数：处理蓝牙碎片数据
+						 * 我们需要把它们拼成 "F:12.5,13.0#" 然后按 # 切割
+						 */
+						processAsthmaBLEData(dataChunk) {
+							// 1. 将收到的碎片追加到缓冲区
+							this.bleAsthmaDataBuffer += dataChunk;
+							
+							// 2. 检查缓冲区里有没有结束符 #
+							// split('#') 会把 "数据1#数据2#" 切割成 ["数据1", "数据2", ""]
+							if (this.bleAsthmaDataBuffer.includes('#')) {
+								let lines = this.bleAsthmaDataBuffer.split('#');
+								
+								// 3. 处理所有完整的包（除了最后一个可能不完整的）
+								for (let i = 0; i < lines.length - 1; i++) {
+									const completeLine = lines[i];
+									if (completeLine && completeLine.length > 0) {
+										this.processAsthmaRealData(completeLine);
+									}
+								}
+								
+								// 4. 将最后一段（可能是半截数据）放回缓冲区，等待下一次拼接
+								this.bleAsthmaDataBuffer = lines[lines.length - 1];
+							}
+						},
+			
+						/**
+						 * 2. 解析函数：处理一条完整的数据
+						 * 格式示例: "F:12.5,13.2,14.5"
+						 */
+						processAsthmaRealData(dataStr) {
+							
+			
+							// 1. 判断是否是流速数据 (以 F: 开头)
+							if (dataStr.startsWith("F:") || dataStr.startsWith("f:")) {
+								// 2. 去掉前缀 "F:"
+								let cleanData = dataStr.substring(2);
+								
+								// 3. 写入本地文件 (调用之前写的工具类)
+								console.log("【哮喘完整包】", cleanData);
+								const dataArray = cleanData.split(",")
+								let fileName='asthma_flow_' + this.startAsthmaTimeTamp + '.txt'
+								appendAsthmaDataToFile(fileName, dataArray);
+							}
+						},
+						
+						
+			// 开始哮喘检测
+		// 开始哮喘检测
+		// 			startAsthmaDetection() {
+		// 			    if (!this.isConnectedAsthma) {
+		// 			        uni.showToast({ title: '请先连接蓝牙', icon: 'none' })
+		// 			        return
+		// 			    }
+					    
+		// 			    this.startAsthma = true 
+		// 			    this.isStartAsthmadetect = true 
+		// 			    this.startAsthmaTimeTamp = new Date().getTime()
+		// 			    this.bleAsthmaDataBuffer = '' // 清空缓冲区
+					    
+		// 				// 🔥🔥🔥 【新增】发送 FLOW 指令激活硬件 🔥🔥🔥
+		// 				this.sendAsthmaCommand("FLOW");
+		
+		// 			    uni.showToast({ title: '检测开始，请吹气', icon: 'none' })
+		// 			},
+		// pages/device/device.vue
+		
+		startAsthmaDetection() {
+		    if (!this.isConnectedAsthma) {
+		        uni.showToast({ title: '请先连接蓝牙', icon: 'none' })
+		        return
+		    }
+		
+		    // 1. 设置状态
+		    this.startAsthma = true
+		    this.isStartAsthmadetect = true
+		    // 记录开始时间（这个时间戳是文件名的关键）
+		    this.startAsthmaTimeTamp = new Date().getTime()
+		    this.bleAsthmaDataBuffer = '' 
+		
+		    // 2. 发送指令激活硬件
+		    this.sendAsthmaCommand("FLOW");
+		
+		    // 3. 🔥🔥🔥 跳转到检测页（把开始时间传过去，虽然子页面不写文件，但可能需要这个ID）
+		    uni.navigateTo({
+		        url: `/pages/asthma/asthma_detect?startTime=${this.startAsthmaTimeTamp}`
+		    });
+		},
+		
+					sendAsthmaCommand(cmd) {
+					  if (!this.BLEInformation.writeCharaterId) {
+					    console.error("❌ 写特征值未初始化");
+					    return;
+					  }
+					
+					  const encoder = new TextEncoder();
+					  const buffer = encoder.encode(cmd).buffer;
+					
+					  uni.writeBLECharacteristicValue({
+					    deviceId: this.connectBlueDeviceId,
+					    serviceId: this.BLEInformation.writeServiceId,
+					    characteristicId: this.BLEInformation.writeCharaterId,
+					    value: buffer,
+					
+					    // ⭐ 关键：动态适配写类型
+					    writeType: this.BLEInformation.writeType || 'write',
+					
+					    success: () => {
+					      console.log("✅ 发送哮喘指令成功:", cmd);
+					    },
+					    fail: (err) => {
+					      console.error("❌ 发送哮喘指令失败", err);
+					    }
+					  });
+					},
+
+			
+			// 结束哮喘检测
+			endAsthmaDetection() {
+			    // 1. 修改状态
+			    this.startAsthma = false
+			    this.isStartAsthmadetect = false
+				this.bleAsthmaDataBuffer = ''
+			    
+			    // 2. 触发上传流程
+			    // 这里的 uploadAsthmaFilesToOss 来自我们新建的 bluetoothUtil_asthma.js
+			    // 需要传入开始时间和结束时间
+			    let endTime = new Date().getTime()
+			    
+			    showLoading("正在上传数据...")
+			    
+			    // 调用工具类上传
+			    uploadAsthmaFilesToOss(this.startAsthmaTimeTamp, endTime).then(success => {
+			        hideLoading()
+			        if(success) {
+			            // 上传成功后，可能需要弹窗提示或刷新
+			             // this.showCheckModalAsthma = true // 如果需要显示报告生成的弹窗
+			        }
+			    })
+			},
+			
+			// 退出检测确认
+			confirmExitAsthmaCheck() {
+			    this.showCheckModalAsthma = false
+			    // 刷新页面数据等后续操作
+			},
+			
+			// 处理解绑成功
+			handleAsthmaUnbindSuccess(item) {
+			    this.getBindDeviceInfos(); // 刷新列表
+			},
+			
 			handleCOPDUnbindSuccess() {
 			
 			    // 1. 清空状态（不触发 UI 重渲染）
@@ -401,6 +652,7 @@
 					let runningDevices = [];
 					if (this.isStartSleepdetect) runningDevices.push('睡眠呼吸监测');
 					if (this.isStartCOPDdetect) runningDevices.push('慢阻肺监测');
+					if (this.isStartAsthmadetect) runningDevices.push('哮喘监测');
 
 					// 动态生成提示内容
 					const runningMessage = `当前有${runningDevices.join(' 和 ')}设备正在进行监测，请先关闭所有监测设备后再操作。`;
@@ -436,6 +688,19 @@
 					this.bluetoothKeyName = this.COPDDeviceInfos[0].deviceInfo.serialCode;
 					this.showDrawer('copd_showLeft');
 				}
+				else if (e.item.text === '哮喘') {
+				        if (!this.isExistAsthmaDevice) {
+				            uni.showModal({
+				                title: '提示',
+				                content: '您暂未绑定离院哮喘检测设备',
+				                showCancel: false
+				            });
+				            return;
+				        }
+				        // 获取第一个哮喘设备的序列号用于蓝牙搜索
+				        this.bluetoothKeyName = this.AsthmaDeviceInfos[0].deviceInfo.serialCode;
+				        this.showDrawer('asthma_showLeft'); // 打开之前写好的哮喘蓝牙抽屉
+				    }
 			},
 
 			// 打开窗口
@@ -472,6 +737,10 @@
 					onlyFromCamera: true,
 					success: function(res) {
 						let serialCode = res.result
+						if (!serialCode || serialCode.indexOf("YNU_KG_") !== 0) {
+													uni.showToast({ title: '非本设备序列码', icon: 'none' });
+													return; 
+												}
 						let obj = {
 							method: "GET",
 							showLoading: true,
@@ -854,7 +1123,119 @@
 				});
 			
 			},
+            // 1. 连接指定哮喘检测蓝牙设备 (对应 startConnectCOPDBluetooth)
+            			startConnectAsthmaBluetooth(deviceId) {
+            				let that = this
+            				// 询问是否开始监测
+            				uni.showModal({
+            					title: '检测提示',
+            					content: '是否开始连接此哮喘检测设备，开始过后请正确使用设备。',
+            					success: function(res) {
+            						if (res.confirm) {
+            							// 定义本次哮喘已经连接
+            							that.isStartAsthmadetect = true
+            							that.monitorAsthmaBluetoothState()
+            							that.connectAsthmaBluetooth(deviceId)
+            						} else if (res.cancel) {
             
+            						}
+            					}
+            				});
+            			},
+            
+            			// 2. 建立蓝牙连接 (对应 connectCOPDBluetooth)
+            			connectAsthmaBluetooth(deviceId) {
+            				let that = this
+            				that.connectBlueDeviceId = deviceId
+            				// 创建连接
+            				uni.createBLEConnection({
+            					// 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
+            					deviceId: that.connectBlueDeviceId,
+            					// 连接成功
+            					success(res) {
+            						that.blueteeth_voice(); // 复用语音播报
+            						uni.showToast({
+            							title: '成功连接',
+            							icon: 'success',
+            							duration: 1500
+            						})
+            						that.isConnectedAsthma = true
+            						
+            						// 连接完成后关闭抽屉 (注意 ref 名称要对应 template 中的 ref)
+            						that.$refs.asthma_showLeft.close()
+            						
+            						that.startAsthmaTimeTamp = new Date().getTime();
+            						uni.setStorage({
+            							key: monitorStartTime,
+            							data: that.startAsthmaTimeTamp
+            						})
+            						// 执行连接成功的后续处理 获取蓝牙服务列表
+            						setTimeout(() => {
+            							// 继续执行其他代码 (复用获取服务的方法)
+            							that.getBluetoothServices()
+            						}, 2000);
+            					},
+            					// 连接失败
+            					fail(res) {
+            						uni.showToast({
+            							title: '连接失败，请重新连接',
+            							icon: 'fail',
+            							duration: 1500
+            						})
+            						that.isStartAsthmadetect = false
+            					}
+            				});
+            			},
+            
+            			// 3. 监听哮喘蓝牙状态 (对应 monitorCOPDBluetoothState)
+            			async monitorAsthmaBluetoothState() {
+            				let that = this
+            				uni.onBLEConnectionStateChange(async function(res) {
+            					// 该方法回调中可以用于处理连接意外断开等异常情况
+            					if (that.connectBlueDeviceId == res.deviceId && !res.connected && that.isStartAsthmadetect) {
+            						console.log("哮喘设备蓝牙已断开")
+            						
+            						// 重置状态
+            						that.isConnectedAsthma = false
+            						that.bluetoothInfos = []
+            						that.isStartAsthmadetect = false
+            						that.startAsthma = false
+            						that.showCheckModalAsthma = false 
+            						that.bleAsthmaDataBuffer = '';
+            						
+            						// 断开连接清理资源
+            						that.disconnectBluetooth()
+            						
+            						let endTimeTamp = new Date().getTime()
+            						uni.setStorage({
+            							key: monitorEndTime,
+            							data: endTimeTamp
+            						})
+            						
+            						uni.showToast({
+            							title: "蓝牙异常断开",
+            							icon: "none",
+            							duration: 3000
+            						})
+            						
+            						// 断开时尝试上传已有的数据 (调用新写的哮喘上传工具)
+            						// 注意：需要确保 uploadAsthmaFilesToOss 已在 script 顶部引入
+            						let isSuccess = await uploadAsthmaFilesToOss(that.startAsthmaTimeTamp, endTimeTamp)
+            						
+            						if (!isSuccess) {
+            							console.error("哮喘数据自动上传失败");
+            							that.haveNotUpAsthmaFile = true // 标记有未上传文件
+            							uni.showToast({
+            								title: "上传失败，请重新检测",
+            								icon: "none",
+            								duration: 1000
+            							});
+            						} else {
+            							console.log("哮喘数据自动上传成功");
+            						}
+            					}
+            				})
+            			},
 			blueteeth_voice(){
 			   stopSpeak();
 		       speak("蓝牙已连接")
@@ -1144,19 +1525,11 @@
 				  if (that.isStartCOPDdetect) {
 					that.processCOPDBLEData(receiveData)
 				  }
+				  if (that.isStartAsthmadetect) {
+				  	that.processAsthmaBLEData(receiveData)
+				 }
 				})
-				// // 监听蓝牙特征值变化
-				// uni.onBLECharacteristicValueChange(function(res) {
-				// 	const receiveData = buf2string(res.value)
-				// 	// 判断是哪种设备在运行
-				// 	if (that.isStartSleepdetect) {
-				// 		that.processSleepBlueReceiveData(receiveData)  
-				// 	}
-				// 	if (that.isStartCOPDdetect) {
-				// 		that.processCOPDBLEData(receiveData)
-				// 	}
-				// });
-				
+			
 			},
 
 			// 通知蓝牙设备可以发送数据
@@ -1492,6 +1865,10 @@
 	        
 	                request(obj).then(res => {
 	                    let resData = res.data
+				// 1. 【新增】初始化/重置哮喘相关的数组
+				        this.isExistAsthmaDevice = false
+				        this.AsthmaDeviceInfos = []
+				        this.applyAsthmaDeviceInfos = []		
 	        
 	                    // ⭐⭐⭐ 原业务逻辑保持不变 ⭐⭐⭐
 	                    this.isExistSleepDevice = false
@@ -1525,16 +1902,30 @@
 	                            color = "colorSet2"
 	                            iconSrc = "/static/images/device/manzufei.png"
 	                        }
+							
+         //                    if (deviceData.deviceName === '哮喘检测仪') {
+         //                                        color = "colorSet" // 使用与慢阻肺相同的紫色系，或者你在组件里自定义的颜色
+         //                                        iconSrc = "/static/images/device/xiaochuan.png" // 确保static目录下有这张图
+         //                                    }					
 	        
 	                        if (deviceData.status == 1) {
 	                            deviceInfo.activeDate = formattedDate  
 	                            deviceInfo.name = deviceData.deviceName
-	                            let deviceInfoAll = { 
-	                                deviceInfo,
-	                                isViewRule: false,
-	                                color: color,
-	                                iconSrc
+	                            let deviceInfoAll = {
+	                              deviceInfo,
+	                              isViewRule: false,
+	                            
+	                              // ===== 原有字段（睡眠 / 慢阻肺还能继续用）=====
+	                              color: color,
+	                              iconSrc: iconSrc,
+	                            
+	                              // ===== 新增字段（给哮喘用，不影响旧逻辑）=====
+	                              bgTopClass: '',
+	                              bgBottomClass: '',
+	                              arrowClass: '',
+	                              btnClass: ''
 	                            }
+
 	        
 	                            if (deviceData.deviceName === '睡眠呼吸检测仪') {
 	                                this.isExistSleepDevice = true
@@ -1545,7 +1936,26 @@
 	                                this.isExistCOPDDevice = true
 	                                this.COPDDeviceInfos.push(deviceInfoAll)
 	                            }
-	        
+								// if (deviceData.deviceName === '哮喘检测仪') {
+									
+								//     this.isExistAsthmaDevice = true
+								//     this.AsthmaDeviceInfos.push(deviceInfoAll)
+								//      }
+	                            if (deviceData.deviceName === '哮喘检测仪') {
+	                              this.isExistAsthmaDevice = true
+	                            
+	                              // ⭐ 哮喘专属主题样式（你刚在 pages.device.css 里加的）
+	                              deviceInfoAll.bgTopClass = 'bgColorTop5'
+	                              deviceInfoAll.bgBottomClass = 'bgColorTBottom5'
+	                              deviceInfoAll.arrowClass = 'arrowIcon5'
+	                              deviceInfoAll.btnClass = 'useBtnBgColor5'
+	                            
+	                              // 图标还是正常给
+	                              deviceInfoAll.iconSrc = "/static/images/device/xiaochuan.png"
+	                            
+	                              this.AsthmaDeviceInfos.push(deviceInfoAll)
+	                            }
+
 	                        } else {
 	                            deviceInfo.applicationDate = formattedDate
 	                            deviceInfo.status = deviceData.status
@@ -1564,6 +1974,10 @@
 	                            if (deviceData.deviceName === '慢阻肺检测仪') {
 	                                this.applyCOPDDeviceInfos.push(deviceInfoAll)
 	                            }
+								
+								if (deviceData.deviceName === '哮喘检测仪') {
+								        this.applyAsthmaDeviceInfos.push(deviceInfoAll)
+								    }
 	                        }
 	                    }
 	        
@@ -1749,7 +2163,9 @@
 			checkBatteryOptimizeStatus().then((isIgnoring) => {
 				this.isBatteryOptimizationIgnored = isIgnoring
 			});
-		}
+			uni.$on('stop-asthma-detection-from-child', this.handleChildStopRequest);
+			},
+		
 	}
 </script>
 

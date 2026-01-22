@@ -62,14 +62,14 @@
 						<view class="title">睡眠报告</view>
 					</view>
 			</view>
-			<view @click="url(`/pages/copd/copd_index/copd_index`)" class="item">
+			<!-- <view @click="url(`/pages/copd/copd_index/copd_index`)" class="item">
 					<view class="item-inner">
 						<view class="img bg-cyan">
 							<image src="/static/images/menu/chakan.png" />
 						</view>
 						<view class="title">慢阻肺</view>
 					</view>
-			</view>
+			</view> -->
 <!-- 			<view @click="url(`/pages/copd/report_index/report_index`)" class="item">  
 					<view class="item-inner">
 						<view class="img bg-cyan">

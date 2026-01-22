@@ -7,7 +7,8 @@ import {
 // const BASE_URL = 'http://127.0.0.1:9999';
 // const BASE_URL = "http://132.232.152.65:9999"
    // const BASE_URL = 'http://192.168.31.219:9998';
-   const BASE_URL ='http://42.193.14.241:21611';
+   // const BASE_URL ='http://42.193.14.241:21611';
+   const BASE_URL = 'http://10.141.129.242:9999';
 
 
 /**
@@ -32,7 +33,6 @@ export const request = function(obj) {
 		if (obj.contentType) {
 			contentType = obj.contentType;
 		}
-
 		var method = 'GET';
 		if (obj.method) {
 			method = obj.method;

@@ -1,0 +1,334 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : "用户登录",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path": "pages/device/device",
+			"style": {
+				"navigationBarTitleText": "设备",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+					"path": "pages/version/version",
+					"style": {
+						"navigationBarTitleText": "切换模式",
+						"navigationBarBackgroundColor": "#ffffff",
+						"navigationBarTextStyle": "black"
+					}
+				},
+		{
+			"path" : "pages/sleep-page/sleep_state_index/sleep_state_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "睡眠状态",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/sleep_state/sleep_state",
+			"style" : 
+			{
+				"navigationBarTitleText" : "睡眠状态统计",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/heart_rate_index/heart_rate_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "心率",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/heart_rate/heart_rate",
+			"style" : 
+			{
+				"navigationBarTitleText" : "心率统计",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/breathe_detail_index/breathe_detail_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "呼吸",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/breathe_detail/breathe_detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "呼吸统计",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/sleep_position_index/sleep_position_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "体位体动",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/sleep_position/sleep_position",
+			"style" : 
+			{
+				"navigationBarTitleText" : "体位体动统计",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/my_report_index/my_report_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "历史报告",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/my_report/my_report",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的报告",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path": "pages/sleep-page/snore_detail_index/snore_detail_index",
+			"style": {
+				"navigationBarTitleText": "鼾声",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path": "pages/sleep-page/snore_detail/snore_detail",
+			"style": {
+				"navigationBarTitleText": "鼾声统计",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/editInfo/editInfo",
+			"style" : 
+			{
+				"navigationBarTitleText" : "信息修改",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/purchase/purchase",
+			"style" : 
+			{
+				"navigationBarTitleText" : "套餐购买",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/updatePwd/updatePwd",
+			"style" : 
+			{
+				"navigationBarTitleText" : "密码修改",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep_important/sleep_important",
+			"style" : 
+			{
+				"navigationBarTitleText" : "睡眠的重要性"
+			}
+		},
+		{
+			"path" : "pages/copd_important/copd_important",
+			"style" : 
+			{
+				"navigationBarTitleText" : "慢阻肺监测的重要性"
+			}
+		},
+		{
+			"path" : "pages/sleep_stage/sleep_stage",
+			"style" : 
+			{
+				"navigationBarTitleText" : "睡眠的不同阶段"
+			}
+		},
+		{
+			"path" : "pages/copd_stage/copd_stage",
+			"style" : 
+			{
+				"navigationBarTitleText" : "慢阻肺的不同发展阶段"
+			}
+		},
+		{
+			"path" : "pages/sleep_breath/sleep_breath",
+			"style" : 
+			{
+				"navigationBarTitleText" : "睡眠呼吸暂停"
+			}
+		},
+		{
+			"path" : "pages/copd_dangerious/copd_dangerious",
+			"style" : 
+			{
+				"navigationBarTitleText" : "慢阻肺非常危险"
+			}
+		},
+		{
+			"path" : "pages/monitor_record/monitor_record",
+			"style" : 
+			{
+				"navigationBarTitleText" : "监测记录"
+			}
+		},
+		{
+					"path": "pages/asthma/asthma_info",
+					"style": {
+						"navigationBarTitleText": "哮喘监测-信息录入",
+						"navigationBarBackgroundColor": "#E0F2F1"
+					}
+				},
+				{
+					"path": "pages/asthma/asthma_detect",
+					"style": {
+						"navigationBarTitleText": "呼气测试",
+						"navigationBarBackgroundColor": "#E0F2F1"
+					}
+				},
+		{
+			"path" : "pages/copd/copd_index/copd_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "慢阻肺监测记录",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/copd/copd_detail/copd_detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "慢阻肺报告分析",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/user_register/user_register",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/heart_rhythm/heart_rhythm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/sleep-page/heart_rhythm_index/heart_rhythm_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/copd/report_index/report_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "慢阻肺报告记录",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/copd/report/report",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/copd_analysis_report/index/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "肺分析报告索引",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/copd_analysis_report/report/report",
+			"style" : 
+			{
+				"navigationBarTitleText" : "肺分析报告详情",
+				"enablePullDownRefresh" : true
+			}
+		}
+		
+	],
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#b7d1fa",
+		"list": [{
+				"text": "首页",
+				"iconPath": "static/tarBarIcon/home.png",
+				"selectedIconPath": "static/tarBarIcon/home-.png",
+				"pagePath": "pages/index/index"
+			},
+			{
+				"text": "设备",
+				"iconPath": "static/tarBarIcon/lanya.png",
+				"selectedIconPath": "static/tarBarIcon/lanya-.png",
+				"pagePath": "pages/device/device"
+			},
+			{
+				"text": "我的",
+				"iconPath": "static/tarBarIcon/user.png",
+				"selectedIconPath": "static/tarBarIcon/user-.png",
+				"pagePath": "pages/my/my"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}

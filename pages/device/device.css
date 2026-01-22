@@ -345,3 +345,74 @@
 	font-size: 12px;
 	color: #999;
 }
+/* ===============================
+   哮喘检测仪 - 主题色（薄荷绿系）
+   =============================== */
+
+/* 顶部背景 */
+.bgColorTop5 {
+  background:
+    radial-gradient(circle at left bottom, transparent 6px, #E0F2F1 0)
+      bottom left / 50% 100% no-repeat,
+    radial-gradient(circle at right bottom, transparent 6px, #E0F2F1 0)
+      bottom right / 50% 100% no-repeat;
+}
+
+/* 底部背景 */
+.bgColorTBottom5 {
+  background:
+    radial-gradient(circle at left top, transparent 6px, #B2DFDB 0)
+      top left / 50% 100% no-repeat,
+    radial-gradient(circle at right top, transparent 6px, #B2DFDB 0)
+      top right / 50% 100% no-repeat;
+}
+
+/* 箭头颜色 */
+.arrowIcon5 {
+  border-top: 1px solid #00695C;
+  border-right: 1px solid #00695C;
+}
+
+/* 字体颜色（可选，用你现有 color 系列也行） */
+.color9  { color: #00796B; }
+.color10 { color: #00695C; }
+
+/* 按钮颜色（复用 useBtnBgColor3 也可以） */
+.useBtnBgColor5 {
+  background-color: #26A69A;
+}
+.useBtnBgColor5:active {
+  background-color: #00897B;
+}
+
+/* ===============================
+   统一 notice 宽度 & 间距（最终版）
+   =============================== */
+
+.notice-container {
+  width: 95%;
+  margin: 6px auto 8px auto;   /* 顶部间距变小 */
+  box-sizing: border-box;
+}
+
+.notice-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  padding-left: 8px;
+  margin-bottom: 6px;
+  border-left: 3px solid #409EFF; /* 默认蓝 */
+}
+
+/* 不同设备标题左边竖线颜色（可选） */
+.notice-title-warn   { border-left-color: #f59e0b; }
+.notice-title-sleep  { border-left-color: #0d47a1; }
+.notice-title-copd   { border-left-color: #2E7D32; }
+.notice-title-asthma { border-left-color: #00695C; }
+
+/* 强制 notice-bar 跟容器宽度一致 */
+.notice-container .uni-notice-bar {
+  width: 100%;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
